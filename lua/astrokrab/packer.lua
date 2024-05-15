@@ -22,6 +22,7 @@ return require('packer').startup(function(use)
   })
   --use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   --use('theprimeagen/harpoon')
+  use('folke/neodev.nvim')
   use {
 	  "williamboman/mason.nvim",
 	  "williamboman/mason-lspconfig.nvim",
@@ -51,5 +52,4 @@ return require('packer').startup(function(use)
   use 'nvim-tree/nvim-web-devicons' -- OPTIONAL: for file icons
   use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
   use 'romgrk/barbar.nvim'
-  --use('folke/neodev.nvim')
 end)
