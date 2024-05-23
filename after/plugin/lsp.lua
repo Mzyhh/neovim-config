@@ -1,3 +1,4 @@
+print("after/plugins/lsp.lua")
 local lsp_zero = require('lsp-zero')
 
 lsp_zero.on_attach(function(client, bufnr)

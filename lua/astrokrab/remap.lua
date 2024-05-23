@@ -1,3 +1,4 @@
+print("astrokrab/remap.lua")
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
@@ -7,15 +8,22 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("i", "jk", "<Esc>")
 
--- pair symbols
-vim.keymap.set("i", "{", "{}<Esc>i")
-vim.keymap.set("i", "(", "()<Esc>i")
-vim.keymap.set("i", "'", "''<Esc>i")
-vim.keymap.set("i", "[", "[]<Esc>i")
-vim.keymap.set("i", "\"", "\"\"<Esc>i")
-vim.keymap.set("i", "}", "<Esc>la")
-vim.keymap.set("i", ")", "<Esc>la")
-vim.keymap.set("i", "]", "<Esc>la")
+-- pairing symbols
+vim.keymap.set("i", "{}", "{}")
+vim.keymap.set("i", "[]", "[]")
+vim.keymap.set("i", "()", "()")
+vim.keymap.set("i", "\"\"", "\"\"")
+vim.keymap.set("i", "''", "''")
+
+vim.keymap.set("i", "{{", "{")
+vim.keymap.set("i", "((", "(")
+vim.keymap.set("i", "''", "'")
+vim.keymap.set("i", "[[", "[")
+vim.keymap.set("i", "\"\"", "\"")
+
+vim.keymap.set("i", "{<CR>", "{<CR>}<Esc>k$a<CR>")
+vim.keymap.set("i", "[<CR>", "[<CR>]<Esc>k$a<CR>")
+vim.keymap.set("i", "(<CR>", "(<CR>)<Esc>k$a<CR>")
 
 -- barbar remaps
 vim.keymap.set("n", "<A-,>", "<Cmd>BufferPrevious<CR>")
