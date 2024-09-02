@@ -1,4 +1,3 @@
-print("after/plugins/colors.lua")
 function ColorMyPencils(color)
 	color = color or "rose-pine"
 	vim.cmd.colorscheme(color)
