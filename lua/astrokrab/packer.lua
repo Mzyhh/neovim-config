@@ -5,6 +5,9 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
+  use 'Civitasv/cmake-tools.nvim'
+
+
   use 'wbthomason/packer.nvim'
 
   use {
