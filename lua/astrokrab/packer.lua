@@ -4,9 +4,10 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'Civitasv/cmake-tools.nvim'
-
+  use {
+    'Civitasv/cmake-tools.nvim',
+    config = function() require("cmake-tools").setup {} end,
+  }
 
   use 'wbthomason/packer.nvim'
 
@@ -16,13 +17,19 @@ return require('packer').startup(function(use)
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  use({
-	  'rose-pine/neovim',
-	  as = 'rose-pine',
-	  config = function()
-		  vim.cmd('colorscheme rose-pine-moon')
-	  end
-  })
+--  use({
+--      'rose-pine/neovim',
+--      as = 'rose-pine',
+--      config = function()
+--          vim.cmd('colorscheme rose-pine-moon')
+--      end
+--  })
+    use {
+      "loctvl842/monokai-pro.nvim",
+      config = function()
+          require("monokai-pro").setup()
+      end
+    }
   --use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   --use('theprimeagen/harpoon')
   use('folke/neodev.nvim')
