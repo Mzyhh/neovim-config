@@ -12,7 +12,7 @@ local function on_attach()
    vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { buffer = 0 })
 end
 
-local languages = { "clangd", "pyright" }
+local languages = { "clangd", "pyright", "cmake" }
 
 return {
    {
@@ -39,10 +39,16 @@ return {
          })
 
          for _, language in pairs(languages) do
-            require("lspconfig")[language].setup({
-               on_attach = on_attach,
-               capabilities = capabilities,
-            })
+            local lopts = {
+                    on_attach = on_attach,
+                    capabilities = capabilities,
+                }
+            local require_ok, settings = pcall(require, "plugins.lsp." .. language)
+                if require_ok then
+                  opts = vim.tbl_deep_extend("force", settings, opts)
+                end
+            require("lspconfig")[language].setup(lopts)
+
          end
 
          vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -59,7 +65,7 @@ return {
    {
       "williamboman/mason-lspconfig.nvim",
       opts = {
-         ensure_installed = { "lua_ls", "clangd", "pyright", }
+         ensure_installed = { "lua_ls", "clangd", "pyright",  "cmake"}
       }
    }
 }
