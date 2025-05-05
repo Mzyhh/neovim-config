@@ -12,7 +12,7 @@ local function on_attach()
    vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { buffer = 0 })
 end
 
-local languages = { "clangd", "pyright", "cmake" }
+local languages = { "pyright", "cmake" }
 
 return {
    {
@@ -31,6 +31,11 @@ return {
                },
             },
          })
+         require("lspconfig").clangd.setup({
+                init_options = {
+                    fallbackFlags = {'--std=c++20'}
+                }
+            })
 
          require("lspconfig").tailwindcss.setup({
             on_attach = function()
